@@ -1,10 +1,16 @@
 # Project2
-Project 2 of SEIR5/9
 
 Customized News Feed
 ---
-## MVP Layout
+## User Stories
+
+AAU, I would like to visit this site to read about subjects I care about, customizable by me.
+
+AAU, I would like to leave comments on articles and share thoughts with a community.
 ---
+## MVP Layout
+
+
 ### Homepage/Index
 
 #### Header
@@ -13,7 +19,6 @@ Button of 'Login/Signup' - Top Right
 
  #### Body
 Button of 'Customize Feed' - Top Centered
-
 Left Column Features Selected Sources To Follow, starts blank and fills when added to.
 ---
 ### Show Page
@@ -22,6 +27,12 @@ Left Column Features Selected Sources To Follow, starts blank and fills when add
 "Selected Subject from Index Page"
 
 #### Body
+
 "Brief History/Description/Summary of Subject".
 ---
 
+### Entity Relationship Diagram
+
+User => Articles "One User to Many Favorited Articles"
+User => Comments "One User to Many Comments"
+Articles => "Many Articles to Many Comments"

@@ -18,9 +18,10 @@ AAU, I would like to leave comments on articles and share thoughts with a commun
 Button of 'Login/Signup' - Top Right
 
  #### Body
+
 Button of 'Customize Feed' - Top Centered
 Left Column Features Selected Sources To Follow, starts blank and fills when added to.
----
+
 ### Show Page
 
 #### Header
@@ -29,7 +30,6 @@ Left Column Features Selected Sources To Follow, starts blank and fills when add
 #### Body
 
 "Brief History/Description/Summary of Subject".
----
 
 ### Entity Relationship Diagram
 

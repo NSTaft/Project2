@@ -20,3 +20,11 @@ const articlesSchema = new Schema({
     img: Image,
     text: String
 })
+
+// Make article model // the '' argument becomes a collection
+const Article = model('Article', articlesSchema)
+
+///////////////////////////////////////////////////
+// Export Model
+///////////////////////////////////////////////////
+module.exports = Article;

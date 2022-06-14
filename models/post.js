@@ -3,9 +3,9 @@
 /////////////////////////////////////////////
 
 const mongoose = require('./connections')
-const articles = [{
-    title: 'Article 1',
-    body: 'This is the body of article 1',
+const posts = [{
+    title: 'post 1',
+    body: 'This is the body of post 1',
     datePublished: '2019-01-01',
     imgUrl: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
 }]
@@ -20,8 +20,8 @@ const { Schema, model } = mongoose
 
 
 
-// Make article Schema
-const articleSchema = new Schema({
+// Make post Schema
+const postschema = new Schema({
     author: String,
     title: String,
     body: String,
@@ -29,11 +29,11 @@ const articleSchema = new Schema({
     img: String
 })
 
-// Make article model // the '' argument becomes a collection
-const Article = model('Article', articleSchema)
+// Make post model // the '' argument becomes a collection
+const post = model('post', postschema)
 
 ///////////////////////////////////////////////////
 // Export Model
 ///////////////////////////////////////////////////
-module.exports = Article;
-module.exports = articles;
+module.exports = post;
+module.exports = posts;

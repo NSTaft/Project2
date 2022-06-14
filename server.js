@@ -6,9 +6,9 @@ const express = require('express')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const path = require('path')
-const Article = require('./models/article.js')
+const post = require('./models/post.js')
 const MongoStore = require('connect-mongo')
-const articles = require('./models/article.js')
+const posts = require('./models/post.js')
 
 
 
@@ -36,15 +36,17 @@ app.get('/', (req, res) => {
 })
 
 // Index route
-app.get('/articles', (req,res) => {
-    console.log(articles)
-    res.send(articles)
+app.get('/posts', (req,res) => {
+    console.log(posts)
+    res.send(posts)
 })
     
 // Show route
-app.get('/articles/:indexOfArticles', (req,res) => {
-    res.send(articles[req.params.indexOfArticles])
+app.get('/posts/:indexOfposts', (req,res) => {
+    res.render('show', {
+        post: posts[req.params.indexOfposts]
     })
+})
 
 
 //////////////////////////////////

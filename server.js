@@ -8,6 +8,9 @@ const methodOverride = require('method-override')
 const path = require('path')
 const Article = require('./models/article.js')
 const MongoStore = require('connect-mongo')
+const articles = require('./models/article.js')
+
+
 
 /////////////////////////////////////////////////
 // Create our Express Application Object Bind Liquid Templating Engine
@@ -29,8 +32,19 @@ app.use(express.static("public")) // serve files from public statically
 ///////////////////////////////////
 
 app.get('/', (req, res) => {
-    res.send('your server is running, better go catch it')
+    res.send('Hello World')
 })
+
+// Index route
+app.get('/articles', (req,res) => {
+    console.log(articles)
+    res.send(articles)
+})
+    
+// Show route
+app.get('/articles/:indexOfArticles', (req,res) => {
+    res.send(articles[req.params.indexOfArticles])
+    })
 
 
 //////////////////////////////////

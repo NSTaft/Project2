@@ -40,8 +40,15 @@ Left Column Features Selected Sources To Follow, starts blank and fills when add
 
 ### Entity Relationship Diagram
 
-User => Articles "One User to Many Favorited Articles"
+User 1:M Articles 
+
+User 1:M Comments 
+
+Articles M:M Comments
+
+
+<!-- User => Articles "One User to Many Favorited Articles"
 
 User => Comments "One User to Many Comments"
 
-Articles => "Many Articles to Many Comments"
+Articles => "Many Articles to Many Comments" -->

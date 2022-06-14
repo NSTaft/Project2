@@ -14,15 +14,15 @@ const mongoose = require('./connections')
 const { Schema, model } = mongoose
 
 // Make article Schema
-const articlesSchema = new Schema({
+const articleSchema = new Schema({
     title: String,
     datePublished: Date,
-    img: Image,
+    img: String,
     text: String
 })
 
 // Make article model // the '' argument becomes a collection
-const Article = model('Article', articlesSchema)
+const Article = model('Article', articleSchema)
 
 ///////////////////////////////////////////////////
 // Export Model

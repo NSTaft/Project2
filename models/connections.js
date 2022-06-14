@@ -21,10 +21,10 @@ mongoose.connect(DATABASE_URL, CONFIG)
 mongoose.connection
 .on("open", () => console.log("Connected to Mongoose"))
 .on("close", () => console.log("Disconnected from Mongoose"))
-.on("error", (error) => console.log(error));
+.on("error", (error) => console.log(error))
 
 ////////////////////////////////////////////////////
 // Export the Connection
 ////////////////////////////////////////////////////
 
-module.exports = mongoose;
+module.exports = mongoose

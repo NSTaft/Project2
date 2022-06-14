@@ -12,14 +12,17 @@ const mongoose = require('./connections')
 // const Schema = mongoose.Schema
 // const model = mongoose.model
 // is equal to:
-const commentsSchema = new Schema({
+const { Schema, model } = mongoose
+
+// Make comments Schema
+const commentSchema = new Schema({
     username: String,
     text: String,
     date: Date,
 })
 
-// Make comment model
-const Comment = model('Comment', commentsSchema)
+// Make comment model, argument becomes a collection
+const Comment = model('Comment', commentSchema)
 
 ///////////////////////////////////////////////////
 // Export Model

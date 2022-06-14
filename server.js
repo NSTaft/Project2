@@ -32,24 +32,33 @@ app.use(express.static("public")) // serve files from public statically
 ///////////////////////////////////
 
 app.get('/', (req, res) => {
+    res.send('Homepage')
+})
+
+// Index route for all posts
+app.get('/posts', (req,res) => {
+    res.render('index', {
+        allPosts: posts
+    })
+})
+
+app.post('/posts', (req, res) => {
     res.send('Hello World')
 })
 
-// Show route
+// New route for creating a new post
+app.get('/posts/new', (req, res) => {
+    res.render('new.liquid')
+})
+
+
+// Show route for a single post
 app.get('/posts/:indexOfposts', (req,res) => {
     res.render('show', {
         post: posts[req.params.indexOfposts]
     })
 })
 
-
-// Index route
-app.get('/posts', (req,res) => {
-    res.render('index', {
-        allPosts: posts
-    })
-})
-    
 
 
 //////////////////////////////////

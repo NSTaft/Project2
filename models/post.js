@@ -4,17 +4,22 @@
 
 const mongoose = require('./connections')
 const posts = [{
+    author: 'John',
     title: 'First Post',
     body: 'This is the body of post 1',
     datePublished: '2019-01-01',
     imgUrl: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 },
-    {title: 'Second Post',
+{
+    author: 'Jane',
+    title: 'Second Post',
     body: 'This is the body of post 2',
     datePublished: '2019-01-02',
     imgUrl: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 },
-    {title: 'Third Post',
+{
+    author: 'John',
+    title: 'Third Post',
     body: 'This is the body of post 3',
     datePublished: '2019-01-03',
     imgUrl: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'

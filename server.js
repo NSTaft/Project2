@@ -35,18 +35,21 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-// Index route
-app.get('/posts', (req,res) => {
-    console.log(posts)
-    res.send(posts)
-})
-    
 // Show route
 app.get('/posts/:indexOfposts', (req,res) => {
     res.render('show', {
         post: posts[req.params.indexOfposts]
     })
 })
+
+
+// Index route
+app.get('/posts', (req,res) => {
+    res.render('index', {
+        allPosts: posts
+    })
+})
+    
 
 
 //////////////////////////////////

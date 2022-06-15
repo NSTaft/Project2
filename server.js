@@ -9,14 +9,9 @@ const path = require('path')
 const post = require('./models/post.js')
 const MongoStore = require('connect-mongo')
 const posts = require('./models/post.js')
-
-
-
-/////////////////////////////////////////////////
-// Create our Express Application Object Bind Liquid Templating Engine
-/////////////////////////////////////////////////
+const rowdy = require('rowdy-logger')
 const app = require("liquid-express-views")(express())
-
+const routesReport = rowdy.begin(app)
 
 /////////////////////////////////////////////////////
 // Middleware
@@ -36,9 +31,14 @@ app.use(express.json()) // parse json request bodies
 ///////////////////////////////////
 
 app.get('/', (req, res) => {
-    res.render('index.liquid')
+    res.send('Homepage')
 })
 
+app.post('/posts', (req, res) => {
+    post.push(req.body)
+    console.log(posts)
+    res.redirect('/posts')
+})
 
 // Index route for all posts
 app.get('/posts', (req, res) => {
@@ -62,7 +62,12 @@ app.get('/posts/:indexOfPosts', (req, res) => {
     })
 })
 
-// Edit route for a single post
+app.delete('/posts/:indexOfPosts', (req, res) => {
+    posts.splice(req.params.indexOfPosts, 1)
+    // remove 1 post from the posts array
+    res.redirect('/posts')
+})
+
 app.get('/posts/:indexOfPosts/edit', (req, res) => {
     res.render(
         'edit', 
@@ -70,21 +75,6 @@ app.get('/posts/:indexOfPosts/edit', (req, res) => {
         post: posts[req.params.indexOfPosts],
         index: req.params.indexOfPosts
 })})
-
-app.post('/posts', (req, res) => {
-    post.push(req.body)
-    console.log(posts)
-    res.redirect('/posts')
-})
-
-
-
-app.delete('/posts/:indexOfPosts', (req, res) => {
-    posts.splice(req.params.indexOfPosts, 1)
-    // remove 1 post from the posts array
-    res.redirect('/posts')
-})
-
 
 app.put('/posts/:indexOfPosts', (req, res) => {
     posts[req.params.indexOfPosts] = req.body
@@ -95,4 +85,8 @@ app.put('/posts/:indexOfPosts', (req, res) => {
 // Server Listener
 //////////////////////////////////
 const PORT = process.env.PORT
-app.listen(PORT, () => console.log(`Now listening on port ${PORT}`))
+app.listen(PORT, () => {
+console.log(`Now listening on port ${PORT}`)
+routesReport.print()
+})
+

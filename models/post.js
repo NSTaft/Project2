@@ -38,9 +38,9 @@ const postschema = new Schema({
     author: String,
     title: String,
     body: String,
-    datePublished: Date,
+    datePublished: { type: Date, default: Date.now },
     img: String
-})
+},{timestamps: true})
 
 // Make post model // the '' argument becomes a collection
 const post = model('post', postschema)

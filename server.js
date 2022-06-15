@@ -36,14 +36,9 @@ app.use(express.json()) // parse json request bodies
 ///////////////////////////////////
 
 app.get('/', (req, res) => {
-    res.send('Homepage')
+    res.render('index.liquid')
 })
 
-app.post('/posts', (req, res) => {
-    post.push(req.body)
-    console.log(posts)
-    res.redirect('/posts')
-})
 
 // Index route for all posts
 app.get('/posts', (req, res) => {
@@ -61,15 +56,38 @@ app.get('/posts/new', (req, res) => {
 
 
 // Show route for a single post
-app.get('/posts/:indexOfposts', (req, res) => {
+app.get('/posts/:indexOfPosts', (req, res) => {
     res.render('show', {
-        post: posts[req.params.indexOfposts]
+        post: posts[req.params.indexOfPosts]
     })
 })
 
-app.delete('/posts/:indexOfposts', (req, res) => {
-    posts.splice(req.params.indexOfposts, 1)
+// Edit route for a single post
+app.get('/posts/:indexOfPosts/edit', (req, res) => {
+    res.render(
+        'edit', 
+    {
+        post: posts[req.params.indexOfPosts],
+        index: req.params.indexOfPosts
+})})
+
+app.post('/posts', (req, res) => {
+    post.push(req.body)
+    console.log(posts)
+    res.redirect('/posts')
+})
+
+
+
+app.delete('/posts/:indexOfPosts', (req, res) => {
+    posts.splice(req.params.indexOfPosts, 1)
     // remove 1 post from the posts array
+    res.redirect('/posts')
+})
+
+
+app.put('/posts/:indexOfPosts', (req, res) => {
+    posts[req.params.indexOfPosts] = req.body
     res.redirect('/posts')
 })
 

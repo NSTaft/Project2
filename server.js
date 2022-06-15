@@ -25,10 +25,10 @@ app.use(morgan("tiny")) // for request logging
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: true })) // parse urlencoded request bodies
 app.use(express.static("public")) // tells express to use the public folder for static content
-app.use((req, res, next) => {
-    console.log('I run all routes')
-    next()
-}) // middleware to run on all routes
+app.use((req, res, next) => {console.log('I run all routes')
+    next() }) // middleware to run on all routes
+app.use(express.json()) // parse json request bodies
+
 
 
 ///////////////////////////////////
@@ -67,7 +67,11 @@ app.get('/posts/:indexOfposts', (req, res) => {
     })
 })
 
-
+app.delete('/posts/:indexOfposts', (req, res) => {
+    posts.splice(req.params.indexOfposts, 1)
+    // remove 1 post from the posts array
+    res.redirect('/posts')
+})
 
 //////////////////////////////////
 // Server Listener

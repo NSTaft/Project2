@@ -15,28 +15,6 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 
-
-const posts = [{
-    author: 'John',
-    title: 'First Post',
-    body: 'This is the body of post 1',
-    datePublished: '2019-01-01'
-},
-{
-    author: 'Jane',
-    title: 'Second Post',
-    body: 'This is the body of post 2',
-    datePublished: '2019-01-02'
-},
-{
-    author: 'John',
-    title: 'Third Post',
-    body: 'This is the body of post 3',
-    datePublished: '2019-01-03'
-},
-]
-
-
 // Make post Schema
 const postSchema = new Schema({
     author: String,
@@ -60,4 +38,3 @@ const Post = model('Post', postSchema)
 ///////////////////////////////////////////////////
 //make this exportable to be accessed in `server.js`
 module.exports = Post;
-module.exports = posts;

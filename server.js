@@ -1,18 +1,19 @@
 /////////////////////////////////////////////
 // Import Our Dependencies
 /////////////////////////////////////////////
-require('dotenv').config()
-const express = require('express')
-const morgan = require('morgan')
-const methodOverride = require('method-override')
+require('dotenv').config() // Load ENV variables from .env file
+const express = require('express') 
+const morgan = require('morgan') 
+const methodOverride = require('method-override') 
 const path = require('path')
-const post = require('./models/post.js')
+const Post = require('./models/post.js')
 const MongoStore = require('connect-mongo')
 const posts = require('./models/post.js')
 const rowdy = require('rowdy-logger')
 const mongoose = require('mongoose')
 const app = require("liquid-express-views")(express())
 const routesReport = rowdy.begin(app)
+
 
 // Global configuration
 const mongoURI = 'mongodb://127.0.0.1/blog'
@@ -40,7 +41,26 @@ app.use((req, res, next) => {console.log('I run all routes')
     next() }) // middleware to run on all routes
 app.use(express.json()) // parse json request bodies
 
+const myFirstPost = {
+    author: 'Nathan',
+    title: 'My First Post',
+    body: 'This is the body of my first post',
+    datePublished: '2022-06-15'
+}
 
+// Post.create(myFirstPost)
+// // if database transaction succeeds
+// .then((post) => {
+//     console.log(post)
+//     })
+//     // if database transaction fails
+//     .catch((error) => {
+//         console.log(error) 
+//     })
+//     // close database connection either way
+//     .finally(() => {
+//         db.close()
+// })
 
 ///////////////////////////////////
 // Routes
@@ -51,7 +71,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/posts', (req, res) => {
-    post.push(req.body)
+    Post.push(req.body)
     console.log(posts)
     res.redirect('/posts')
 })

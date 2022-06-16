@@ -14,13 +14,13 @@
     <h2>Postings</h2>
     {% for post in posts %}
     <div>
-       <h3><a href="/posts/{{forloop.index0}}">{{post.title}}</a></h3>
+       <h3><a href="/posts/{{post.id}}">{{post.title}}</a></h3>
         <p>{{post.body}}</p>
         <p>{{post.datePublished}}</p>
-        <form action="/posts/{{ forloop.index0 }}?_method=DELETE" method="POST">
+        <form action="/posts/{{ post.id }}?_method=DELETE" method="POST">
             <input type="submit" value="Delete Post">
         </form>
-        <a href="/posts/{{forloop.index0}}/edit">Edit</a>
+        <a href="/posts/{{post.id}}/edit">Edit</a>
     </div>
     {% endfor %}
     <a href="/posts/new">Create new Post</a>

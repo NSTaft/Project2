@@ -127,7 +127,7 @@ app.get('/posts/:id/edit', (req, res) => {
     Post.findById(postId)
     // -->render if there is a post
         .then(post => {
-            res.render('posts/edit', { post })
+            res.render('edit', { post })
         })
     // -->error if no post
         .catch(err => { 
@@ -143,7 +143,7 @@ app.put('/posts/:id', (req, res) => {
     // tell mongoose to update the post
     Post.findByIdAndUpdate(postId, req.body, { new: true })
     // if successful -> redirect to the post page
-        .then(fruit => {
+        .then(post => {
             console.log('the updated post', post)
 
             res.redirect(`/posts/${post.id}`)
@@ -156,11 +156,11 @@ app.put('/posts/:id', (req, res) => {
 app.get('/posts/:id', (req, res) => {
     // first, we need to get the id
     const postId = req.params.id
-    // then we can find a fruit by its id
+    // then we can find a post by its id
     Post.findById(postId)
     // once found, we can render a view with the data
         .then(post => {
-            res.render('posts/show', { post })
+            res.render('show', { post })
         })
     // if there is an error, show that instead
         .catch(err => {
@@ -207,7 +207,7 @@ app.delete('/posts/:id', (req, res) => {
 //     res.render(
 //         'edit', 
 //     {
-//         post: posts[req.params.indexOfPosts],
+//         post: [req.params.indexOfPosts],
 //         index: req.params.indexOfPosts
 // })})
 
@@ -220,3 +220,4 @@ app.listen(PORT, () => {
 console.log(`Now listening on port ${PORT}`)
 // routesReport.print()
 })
+

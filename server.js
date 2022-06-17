@@ -57,7 +57,7 @@ app.use('/posts', PostRouter)
 app.use('/user', UserRouter)
 
 app.get('/', (req, res) => {
-    res.render('index.liquid')
+    res.render('homepage.liquid')
 })
 
 
@@ -67,6 +67,7 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT
 app.listen(PORT, () => {
 console.log(`Now listening on port ${PORT}`)
-// routesReport.print()
+
+routesReport.print()
 })
 

@@ -5,7 +5,7 @@
 
  // Pull Schema and model from mongoose
 
- const { Schema, modal } = mongoose
+ const { Schema, model } = mongoose
 
  // Make user schema
 

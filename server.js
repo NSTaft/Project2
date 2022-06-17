@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const Post = require('./models/post.js')
 const app = require("liquid-express-views")(express())
 const PostRouter = require('./controllers/posts.js')
+const UserRouter = require('./controllers/user.js')
 const path = require('path')
 const MongoStore = require('connect-mongo')
 const rowdy = require('rowdy-logger')
@@ -44,9 +45,10 @@ app.use(express.json()) // parse json request bodies
 // Routes
 ///////////////////////////////////
 app.use('/posts', PostRouter)
+app.use('/user', UserRouter)
 
 app.get('/', (req, res) => {
-    res.send('Homepage')
+    res.render('index.liquid')
 })
 
 

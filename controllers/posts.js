@@ -10,39 +10,6 @@ const router = express.Router()
 // Routes
 //////////////////////////
 
-// Seed the database with dummy data
-router.get('/seed', (req, res) => {
-    // array of dummy data)
-    const seedPosts = [{
-        author: 'John',
-        title: 'First Post',
-        body: 'This is the body of post 1',
-        datePublished: '2019-01-01'
-},
-{
-        author: 'Jane',
-        title: 'Second Post',
-        body: 'This is the body of post 2',
-        datePublished: '2019-01-02'
-},
-{
-        author: 'John',
-        title: 'Third Post',
-        body: 'This is the body of post 3',
-        datePublished: '2019-01-03'
-},
-]
-Post.remove({})
-.then(data => {
-    console.log('removed all posts', data)
-    // create dummy data
-    Post.create(seedPosts)
-    .then(data => {
-        console.log('created dummy posts', data)
-        res.send(data)
-    })
-})
-})
 
 
 // Index route for all posts

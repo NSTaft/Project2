@@ -21,7 +21,8 @@ const postSchema = new Schema({
     title: String,
     body: String,
     datePublished: { type: Date, default: Date.now },
-    img: String
+    img: String,
+    username: String
 },{timestamps: true})
 
 // Creating Post model : We need to convert our schema into a model-- will be stored in 'Posts' collection.  Mongo does this for you automatically

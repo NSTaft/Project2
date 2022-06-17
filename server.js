@@ -9,6 +9,7 @@ const Post = require('./models/post.js')
 const app = require("liquid-express-views")(express())
 const PostRouter = require('./controllers/posts.js')
 const UserRouter = require('./controllers/user.js')
+const session = require('express-session')
 const path = require('path')
 const MongoStore = require('connect-mongo')
 const rowdy = require('rowdy-logger')
@@ -37,6 +38,14 @@ app.use(morgan("tiny")) // for request logging
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({ extended: false })) // parse urlencoded request bodies
 app.use(express.static("public")) // tells express to use the public folder for static content
+app.use(
+    session({
+        secret: process.env.SECRET,
+        store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+        saveUninitialized: true,
+        resave: false
+    })
+)
 app.use((req, res, next) => {console.log('I run all routes')
     next() }) // middleware to run on all routes
 app.use(express.json()) // parse json request bodies

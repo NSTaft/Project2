@@ -6,6 +6,18 @@ const Post = require('../models/post.js')
 // Create Route
 const router = express.Router()
 
+////////////////////////////////////////
+// Router Middleware
+////////////////////////////////////////
+// Authorization Middleware
+router.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/user/login");
+    }
+  });
+
 //////////////////////////
 // Routes
 //////////////////////////
@@ -15,7 +27,7 @@ const router = express.Router()
 // Index route for all posts
 router.get('/', (req, res) => {
     // find all posts in the database
-    Post.find({})
+    Post.find({ username: req.session.username })
     //then render a template with all the posts
     .then(posts => {
         res.render('index', { posts })
@@ -34,6 +46,8 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
+    // add username to req.body to track related user
+    req.body.username = req.session.username
     // now we're ready for mongoose to do its thing
     Post.create(req.body)
         .then(post => {

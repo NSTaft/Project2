@@ -20,8 +20,7 @@ const postSchema = new Schema({
     author: String,
     title: String,
     body: String,
-    datePublished: { type: Date, default: Date.now },
-    img: String,
+    datePublished: Date,
     username: String
 },{timestamps: true})
 

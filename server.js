@@ -9,6 +9,7 @@ const Post = require('./models/post.js')
 const app = require("liquid-express-views")(express())
 const PostRouter = require('./controllers/posts.js')
 const UserRouter = require('./controllers/user.js')
+const CommentRouter = require('./controllers/comments.js')
 const session = require('express-session')
 const path = require('path')
 const MongoStore = require('connect-mongo')
@@ -55,9 +56,10 @@ app.use(express.json()) // parse json request bodies
 ///////////////////////////////////
 app.use('/posts', PostRouter)
 app.use('/user', UserRouter)
+app.use('/comment', CommentRouter)
 
 app.get('/', (req, res) => {
-    res.render('homepage.liquid')
+    res.redirect('/user/signup')
 })
 
 

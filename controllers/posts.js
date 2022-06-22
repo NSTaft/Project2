@@ -100,8 +100,10 @@ router.get('/:id', (req, res) => {
     const postId = req.params.id
     // then we can find a post by its id
     Post.findById(postId)
+    .populate("comments")
     // once found, we can render a view with the data
         .then(post => {
+            console.log(post)
             res.render('show', { post })
         })
     // if there is an error, show that instead

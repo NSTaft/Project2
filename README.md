@@ -5,6 +5,7 @@ For my second project in my Software Engineering Immersive bootcamp, I've create
 Posts are displayed on the homepage. From there, users can select a post to view on its own page to see comments for the post.
 
 ---
+
 # User Stories
 
 AAU, I would like to visit this site to post interesting memoirs and tidbits about daily life and subjects I care about.
@@ -12,18 +13,34 @@ AAU, I would like to visit this site to post interesting memoirs and tidbits abo
 AAU, I would like to leave comments on posts and share thoughts with a community.
 
 ---
+
+# Wireframes
+
+At the start of the project, the following wireframes loosely resemble the goal.
+
+Login/Signup Page
+![Screenshot](LoginWF.png)
+
+
+Home Page
+![Screenshot](HomepageWF.png)
+
+Create Post Page
+![Screenshot](CreatePostWF.png)
+
+
+
 # Entity Relationship Diagram
 
-| User | Post | Comment |
-|------|------|----------|
-| Password | Author | Author |
-| Username | Username |  |
-| | Comment | Comment|
-| | Date Published | |
-| | Title | |
-| | Body | |
----
+![Screenshot](ERDss.png)
 
+Shown above, the Entities in this app are the User, the Posts, and the Comments.
+
+A single user can have many posts, and they can have many comments.
+
+A single post can have many comments, but will only belong to one user.
+
+---
 # CRUD Routes
 
 

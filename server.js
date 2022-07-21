@@ -57,7 +57,7 @@ app.use(express.static("public")) // tells express to use the public folder for 
 app.use(
     session({
         secret: process.env.SECRET,
-        store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
+        store: MongoStore.create({ mongoUrl: DATABASE_URL }),
         saveUninitialized: true,
         resave: false
     })
@@ -88,3 +88,4 @@ console.log(`Now listening on port ${PORT}`)
 routesReport.print()
 })
 
+console.log()

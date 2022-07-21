@@ -30,6 +30,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.3.6",
     "morgan": "^1.10.0",
-    "rowdy-logger": "^1.0.2"
+    "rowdy-logger": "^1.0.2",
+    "serve": "^14.0.1"
   }
 }

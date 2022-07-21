@@ -17,18 +17,33 @@ const rowdy = require('rowdy-logger')
 const routesReport = rowdy.begin(app)
 const mongoose = require('mongoose')
 
+/////////////////////////////////////////////
+// Database Connection
+/////////////////////////////////////////////
+// Setup inputs for our connect function
+const DATABASE_URL = process.env.MONGODB_URI
+const CONFIG = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}
+
+// Establish Connection
+mongoose.connect(DATABASE_URL, CONFIG)
+
+
+
 // Global configuration
-const mongoURI = 'mongodb://127.0.0.1/blog'
+// const mongoURI = 'mongodb://127.0.0.1/blog'
 const db = mongoose.connection
-// Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-// Connection Error/Success
+// // Connect to MongoDB
+// mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+// // Connection Error/Success
 // Define callback functions for various events
 db.on("error", (err) => console.log(err.message + " is mongod not running?"));
-db.on("open", () => console.log("mongo connected: ", mongoURI));
+db.on("open", () => console.log("mongo connected: ", DATABASE_URL));
 db.on("close", () => console.log("mongo disconnected"));
 
-
+console.log(db)
 
 
 
